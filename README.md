@@ -1,4 +1,4 @@
-App
+Meetup App
 ============
 
-Demo | App
+Meetup Demo | App
