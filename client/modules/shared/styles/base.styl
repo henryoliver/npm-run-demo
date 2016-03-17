@@ -1,0 +1,167 @@
+// Colors
+white           =   #ffffff
+dark            =   #000000
+
+// Gray tons
+tundora         =   #4a4a4a
+
+// Green tons
+shadow-green    =   #8dbdb7
+
+// Normalize
+*
+*:before
+*:after
+    box-sizing(border-box)
+
+*
+    // Make things that shouldn't be selectable unselectable
+    -webkit-touch-callout none
+    user-select none
+
+    // Get rid of ugly grey tap highlight.
+    -webkit-tap-highlight-color transparent
+
+html
+    text-size-adjust 100%
+
+body
+    margin 0
+
+// HTML5 display definitions
+audio
+canvas
+progress
+video
+    display inline-block
+    vertical-align baseline
+
+audio:not([controls])
+    display none
+    height 0
+
+menu
+    margin 0
+    padding 0
+
+// Links
+a
+    background-color transparent
+    text-decoration none
+    touch-action manipulation
+
+    &:active
+    &:hover
+        outline 0
+
+// Text-level semantics
+b
+strong
+    font-weight bold
+
+// Embedded content
+img
+    border 0
+
+svg:not(:root)
+    overflow hidden
+
+// Grouping content
+figure
+    margin 0
+
+hr
+    box-sizing content-box
+    height 0
+
+// Forms
+button
+input
+select
+textarea
+    color inherit
+    font inherit
+    margin 0
+    touch-action manipulation
+
+    &:focus
+    &:active
+        outline 0
+
+input
+    user-select text
+
+button
+    background-color transparent
+    border 0
+    display flex
+    overflow visible
+    padding 0
+
+button
+select
+    text-transform none
+
+button
+html input[type='button']
+input[type='reset']
+input[type='submit']
+    appearance button
+    cursor pointer
+
+button[disabled]
+html input[disabled]
+    cursor default
+
+button::-moz-focus-inner
+input::-moz-focus-inner
+    border 0
+    padding 0
+
+input
+    line-height normal
+
+input[type='checkbox']
+input[type='radio']
+    box-sizing border-box
+    padding 0
+
+input[type='number']::-webkit-inner-spin-button
+input[type='number']::-webkit-outer-spin-button
+    height auto
+
+input[type='search']
+    appearance textfield
+    box-sizing content-box
+
+input[type='search']::-webkit-search-cancel-button
+input[type='search']::-webkit-search-decoration
+    appearance none
+
+fieldset
+    border 0
+    margin 0
+    padding 0
+
+legend
+    border 0
+    padding 0
+
+textarea
+    overflow auto
+
+// Tables
+table
+    border-collapse collapse
+    border-spacing 0
+
+td
+th
+    padding 0
+
+// Lists
+ul
+dl
+    list-style none
+    margin 0
+    padding 0

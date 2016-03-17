@@ -1,0 +1,12 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+Demo Team
+@henry_s_oliver
+
+# THANKS
+Demo.com
+
+# TECHNOLOGY COLOPHON
+HTML5, CSS3, JavaScript, Jade, Stylus and Cordova

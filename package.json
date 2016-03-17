@@ -1,0 +1,66 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "description": "Meetup App",
+  "author": "Meetup Team <meetup@app.com>",
+  "contributors": [
+    {
+      "name": "Henry Oliver",
+      "email": "henry_oliver@me.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "app-git:/home/git/repo/app/app.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lactate": "^0.13.12"
+  },
+  "devDependencies": {
+    "boxen-cli": "^0.2.0",
+    "browser-sync": "^2.11.1",
+    "bs-html-injector": "^3.0.0",
+    "chalk": "^1.1.1",
+    "chalk-cli": "^2.0.0",
+    "jade": "^1.11.0",
+    "nib": "^1.1.0",
+    "onchange": "^2.0.0",
+    "rollup": "^0.25.3",
+    "stylus": "^0.53.0"
+  },
+  "scripts": {
+    "preclean": "echo 'Cleaning...' | boxen --border-color blue --padding 1",
+    "clean": "echo '=> cleaning _dist folder' | chalk cyan && rm -rf _dist/",
+
+    "prebuild": "echo 'Building...' | boxen --border-color blue --padding 1",
+    "build:markup": "echo '=> compiling markup' | chalk cyan && jade client/index.jade --pretty -o _dist/",
+    "build:styles": "echo '=> converting styles' | chalk cyan && stylus client/main.styl -m -u nib -o _dist/",
+    "build:scripts": "echo '=> bundling scripts' | chalk cyan && rollup -i client/main.js -f cjs -o _dist/main.js -m _dist/main.js.map",
+    "build": "npm run build:markup && npm run build:styles && npm run build:scripts",
+
+    "precopy": "echo 'Copying...' | boxen --border-color blue --padding 1",
+    "copy:images": "echo '=> copying images' | chalk cyan && cp -r client/assets/images _dist/img",
+    "copy:fonts": "echo '=> copying fonts' | chalk cyan && cp -r client/assets/fonts _dist/font",
+    "copy": "npm run copy:images && npm run copy:fonts",
+
+    "sync:images": "echo '=> syncing images' | chalk cyan && rsync -aWrtmu --del client/assets/images/ _dist/img",
+    "sync:fonts": "echo '=> syncing fonts' | chalk cyan && rsync -aWrtmu --del client/assets/fonts/ _dist/font",
+    "sync": "npm run sync:images && npm run sync:fonts",
+
+    "preserve": "echo 'Watching & Serving...' | boxen --border-color white --padding 1",
+    "preserve:browsersync": "echo '=> serving and browsersync' | chalk cyan",
+    "serve:server": "NODE_ENV=development node server/server.js",
+    "serve:browsersync": "node .tasks/browsersync.js",
+    "serve": "npm run serve:server | npm run serve:browsersync",
+
+    "prewatch": "npm run serve -s &",
+    "watch:markup": "echo '=> watching markup' | chalk cyan && onchange 'client/index.jade' 'client/modules/**/*.jade' -v -- npm run build:markup",
+    "watch:styles": "echo '=> watching styles' | chalk cyan && onchange 'client/main.styl' 'client/modules/**/*.styl' -v -- npm run build:styles",
+    "watch:scripts": "echo '=> watching scripts' | chalk cyan && onchange 'client/main.js' 'client/modules/**/*.js' -v -- npm run build:scripts",
+    "watch:assets": "echo '=> watching assets' | chalk cyan && onchange 'client/assets' -v -- npm run sync",
+    "watch": "npm run watch:markup & npm run watch:styles & npm run watch:scripts & npm run watch:assets",
+
+    "start": "npm run clean -s && npm run build -s && npm run copy -s && npm run watch -s"
+  }
+}

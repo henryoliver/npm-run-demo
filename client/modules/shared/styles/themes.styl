@@ -1,0 +1,77 @@
+// Typography
+@font-face
+	font-family francois-one
+	font-style normal
+	font-weight normal
+	src	url('font/francois-one.woff2'),
+		url('font/francois-one.woff'),
+		url('font/francois-one.svg#francois-one') format('svg')
+
+@font-face
+	font-family roboto-light
+	font-style normal
+	font-weight normal
+	src	url('font/roboto-light.woff2'),
+		url('font/roboto-light.woff'),
+		url('font/roboto-light.svg#roboto-light') format('svg')
+
+body
+	background-color white
+	color tundora
+	line-height	1.2
+
+h1
+.title-lg
+	font-family francois-one
+	font-size 80px
+	font-weight normal
+	margin 30px
+
+h2
+.title-md
+	font-family francois-one
+	font-size 16px
+	font-weight normal
+	margin 0
+
+	&.light
+		font-family roboto-light
+
+h3
+.title-sm
+	font-family francois-one
+	font-size 12px
+	font-weight normal
+	margin 0
+
+	&.light
+		font-family roboto-light
+
+p
+	font-family roboto-light
+	font-size 12px
+	font-weight normal
+	margin 0
+
+a
+	color inherit
+	font-family francois-one
+	font-size 10px
+	line-height	inherit
+
+	&:hover
+	&:focus
+		color lightness(dark, 80%)
+		text-decoration none
+
+small
+.small
+	font-family francois-one
+	font-size 7px
+
+.input-lean
+	appearance none
+	background-color transparent
+	border 0
+	border-radius none
+	box-shadow none
